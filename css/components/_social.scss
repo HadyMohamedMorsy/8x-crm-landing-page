@@ -1,0 +1,31 @@
+ul.social-links {
+  @include flex(column);
+  position  : fixed;
+  bottom    : 2rem;
+  left      : 2rem;
+  z-index   : 222;
+  opacity   : 0;
+  visibility: inherit;
+
+  @include media(767px) {
+    display: none;
+  }
+
+  &:hover li:not(:hover) {
+    opacity: 0.5;
+  }
+
+  li {
+    color        : #505050;
+    margin-bottom: .5rem;
+    transition   : opacity .3s ease, color .3s ease;
+
+    &:hover {
+      color: $blue;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.site-btn {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+  width: 100%;
+  overflow: hidden;
+
+  background: $black;
+  color: #f4f4f4;
+
+  font-family: $mainFont;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 3px;
+  padding: 1rem;
+
+  outline: none;
+  border: none;
+  span.circle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0px;
+    height: 0px;
+    background-color: red;
+    border-radius: 1000px;
+    margin-left: 0px;
+    margin-top: 0px;
+    pointer-events: none;
+    &.explode-circle {
+      animation: explode 0.5s forwards;
+    }
+    &.desplode-circle {
+      animation: desplode 0.5s forwards;
+    }
+    @keyframes explode {
+      0% {
+        width: 0px;
+        height: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        background-color: #4b4b4b;
+      }
+      100% {
+        width: 800px;
+        height: 800px;
+        margin-left: -400px;
+        margin-top: -400px;
+        background-color: $blue;
+      }
+    }
+    @keyframes desplode {
+      0% {
+        width: 800px;
+        height: 800px;
+        margin-left: -400px;
+        margin-top: -400px;
+        background-color: $blue;
+      }
+      100% {
+        width: 0px;
+        height: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+        background-color: #4b4b4b;
+      }
+    }
+  }
+  span.text {
+    position: relative;
+    z-index: 2;
+  }
+}

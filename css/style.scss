@@ -1,0 +1,22 @@
+// vendors files
+
+@import "vendors/bootstrap";
+@import "vendors/slick";
+@import "vendors/splitting";
+@import "vendors/lightbox.min";
+@import "vendors/all";
+
+// rest files
+
+@import "utilities/variables";
+@import "utilities/mixins";
+@import "base/global";
+@import "components/preload";
+@import "components/triangle";
+@import "components/button";
+@import "components/go-top";
+@import "components/social";
+@import "layout/header";
+@import "layout/forms";
+@import "pages/index";
+@import "layout/footer";
