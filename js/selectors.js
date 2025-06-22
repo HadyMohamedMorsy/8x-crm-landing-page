@@ -45,7 +45,7 @@ export const finishingStatusProject = document.querySelector(
 );
 export const deliveryDate = document.querySelector(".delivery-date");
 export const tags = document.querySelector(".tags");
-export const devLogoImg = document.querySelector(".dev-logo-img");
+export const devLogoImg = document.querySelectorAll(".dev-logo-img");
 export const devLogo = document.querySelector(".dev-logo");
 export const devInfo = document.querySelector(".dev-info");
 export const devDescText = document.querySelector(".dev-desc-text");
@@ -54,4 +54,3 @@ export const phoneNumber = document.querySelectorAll(".phone-number");
 export const email = document.querySelectorAll(".email");
 export const copyrightYear = document.querySelector(".copyright-year");
 export const projectCarousel = document.querySelector(".project-carousel");
-export const logoDeveloper = document.querySelector(".logo-developer");

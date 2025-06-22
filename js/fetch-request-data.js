@@ -34,7 +34,6 @@ import {
   gardenArea,
   html5VideoContainer,
   installmentsNo,
-  logoDeveloper,
   offeringType,
   paymentMethod,
   phoneNumber,
@@ -526,18 +525,13 @@ function developerInfo(project) {
   const hasDeveloperDescription = project?.developer?.description;
   const shouldShowDeveloperInfo = hasDeveloperLogo || hasDeveloperDescription;
 
-  logoDeveloper.style.display = hasDeveloperLogo ? "block" : "none";
-  if (hasDeveloperLogo) {
-    logoDeveloper.src = project.developer.logo;
-  }
-
   updateContent(project.description, devDescText, null, "block");
   devInfo.style.display = shouldShowDeveloperInfo ? "block" : "none";
 }
 
 function projectLogo(project) {
   devLogo.style.display = project?.logo ? "block" : "none";
-  if (project?.logo) devLogoImg.src = project.logo;
+  if (project?.logo) devLogoImg.forEach((img) => (img.src = project.logo));
 }
 
 function pulishTime(pulishTime) {
