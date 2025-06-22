@@ -72,6 +72,10 @@ async function fetchData() {
     const fullUrl = `${BASE_API}/${publishUuid}`;
     const response = await fetch(fullUrl, {
       method: "POST",
+      headers: {
+        Accept: "application/json",
+        // "X-localization": "ar",
+      },
     });
     const data = await response.json();
     unit = data.data.unit;
