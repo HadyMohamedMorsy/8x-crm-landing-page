@@ -21,6 +21,7 @@ import {
   description,
   detailsImgs,
   devDescText,
+  devInfo,
   devLogo,
   devLogoImg,
   downPayment,
@@ -79,13 +80,20 @@ async function fetchData() {
     setConentUnit(unit);
     setContentProject(unit.project);
     initMap(unit);
+    developerInfo(unit.project);
 
-    // Update developer logo src
-    if (unit.project.developer.logo) {
-      logoDeveloper.src = unit.project.developer.logo;
-      logoDeveloper.style.display = "block";
-    } else {
-      logoDeveloper.style.display = "none";
+    if (unit.project.meta_title) {
+      const metaTitle = document.createElement("meta");
+      metaTitle.setAttribute("name", "title");
+      document.head.appendChild(metaTitle);
+      metaTitle.setAttribute("content", unit.project.meta_title);
+    }
+
+    if (unit.project.meta_description) {
+      const metaDescription = document.createElement("meta");
+      metaDescription.setAttribute("name", "description");
+      document.head.appendChild(metaDescription);
+      metaDescription.setAttribute("content", unit.project.meta_description);
     }
 
     const script = document.createElement("script");
@@ -495,10 +503,9 @@ function setContentProject(project) {
     null,
     "block"
   );
-  updateContent(buildProjectTagsHtml(project), tags, null, "block");
+  updateContent(buildProjectTagsHtml(project), tags, tags, "block");
   faciltiesAndAmenities(project, 1);
   projectLogo(project);
-  updateContent(project.description, devDescText, null, "block");
   updateContent(
     buildProjectCarouselHtml(project),
     projectCarousel,
@@ -514,13 +521,23 @@ function setContentProject(project) {
   updateContent(buildPhasesHtml(project), accordien[1], accordien[1], "block");
 }
 
-function projectLogo(project) {
-  if (project.logo) {
-    devLogoImg.src = project.logo;
-    devLogo.style.display = "block";
-  } else {
-    devLogo.style.display = "none";
+function developerInfo(project) {
+  const hasDeveloperLogo = project?.developer?.logo;
+  const hasDeveloperDescription = project?.developer?.description;
+  const shouldShowDeveloperInfo = hasDeveloperLogo || hasDeveloperDescription;
+
+  logoDeveloper.style.display = hasDeveloperLogo ? "block" : "none";
+  if (hasDeveloperLogo) {
+    logoDeveloper.src = project.developer.logo;
   }
+
+  updateContent(project.description, devDescText, null, "block");
+  devInfo.style.display = shouldShowDeveloperInfo ? "block" : "none";
+}
+
+function projectLogo(project) {
+  devLogo.style.display = project?.logo ? "block" : "none";
+  if (project?.logo) devLogoImg.src = project.logo;
 }
 
 function pulishTime(pulishTime) {

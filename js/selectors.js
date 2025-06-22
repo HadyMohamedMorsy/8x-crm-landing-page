@@ -47,6 +47,7 @@ export const deliveryDate = document.querySelector(".delivery-date");
 export const tags = document.querySelector(".tags");
 export const devLogoImg = document.querySelector(".dev-logo-img");
 export const devLogo = document.querySelector(".dev-logo");
+export const devInfo = document.querySelector(".dev-info");
 export const devDescText = document.querySelector(".dev-desc-text");
 export const accordien = document.querySelectorAll(".accordien");
 export const phoneNumber = document.querySelectorAll(".phone-number");
