@@ -63,6 +63,12 @@ class ContactFormHandler {
           errorMessage = "This field is required";
         }
         break;
+      case "tel":
+        if (!value) {
+          isValid = false;
+          errorMessage = "This field is required";
+        }
+        break;
       default: // textarea
         if (!value) {
           isValid = false;
