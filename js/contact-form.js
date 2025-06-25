@@ -1,10 +1,22 @@
-import { contactForm } from "./selectors.js";
 import { BASE_API } from "./fetch-request-data.js";
+import { contactForm } from "./selectors.js";
 
 class ContactFormHandler {
   constructor() {
-    this.endpoint = `${BASE_API}/712c9adf-dc14-4fc6-93e9-00ad552f4c76`;
+    this.publishUuid = this.getPublishUuidFromUrl();
+    this.endpoint = `${BASE_API}/${this.publishUuid}`;
     this.init();
+  }
+
+  getPublishUuidFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const publishUuid = urlParams.get("publish_uuid");
+
+    if (!publishUuid) {
+      console.warn("No publish_uuid found in URL parameters");
+    }
+
+    return publishUuid;
   }
 
   init() {
@@ -45,16 +57,6 @@ class ContactFormHandler {
 
     // Validate based on field type
     switch (field.type) {
-      case "email":
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!value) {
-          isValid = false;
-          errorMessage = "Email is required";
-        } else if (!emailRegex.test(value)) {
-          isValid = false;
-          errorMessage = "Please enter a valid email address";
-        }
-        break;
       case "text":
         if (!value) {
           isValid = false;
@@ -157,7 +159,8 @@ class ContactFormHandler {
 
   getFormData() {
     const formData = {
-      full_name: contactForm.querySelector('input[name="full_name"]')?.value || "",
+      full_name:
+        contactForm.querySelector('input[name="full_name"]')?.value || "",
       mobile: contactForm.querySelector('input[name="mobile"]')?.value || "",
       description:
         contactForm.querySelector('textarea[name="description"]')?.value || "",
@@ -172,19 +175,12 @@ class ContactFormHandler {
       return false;
     }
 
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      this.showError("Please enter a valid email address");
-      return false;
-    }
-
-    if (!formData.phone.trim()) {
+    if (!formData.mobile.trim()) {
       this.showError("Please enter your phone number");
       return false;
     }
 
-    if (!formData.message.trim()) {
+    if (!formData.description.trim()) {
       this.showError("Please enter your message");
       return false;
     }
