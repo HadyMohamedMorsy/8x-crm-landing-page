@@ -78,11 +78,6 @@ async function fetchData() {
     });
     const data = await response.json();
     unit = data.data.unit;
-    pulishTime(data.data.publish_time);
-    setConentUnit(unit);
-    setContentProject(unit.project);
-    initMap(unit);
-    developerInfo(unit.project);
 
     if (unit.project.meta_title) {
       const metaTitle = document.createElement("meta");
@@ -97,6 +92,12 @@ async function fetchData() {
       document.head.appendChild(metaDescription);
       metaDescription.setAttribute("content", unit.project.meta_description);
     }
+
+    pulishTime(data.data.publish_time);
+    setConentUnit(unit);
+    setContentProject(unit.project);
+    initMap(unit);
+    developerInfo(unit.project);
 
     const script = document.createElement("script");
     script.src = "js/slider.js";

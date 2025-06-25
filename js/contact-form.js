@@ -3,7 +3,7 @@ import { BASE_API } from "./fetch-request-data.js";
 
 class ContactFormHandler {
   constructor() {
-    this.endpoint = BASE_API;
+    this.endpoint = `${BASE_API}/712c9adf-dc14-4fc6-93e9-00ad552f4c76`;
     this.init();
   }
 
@@ -157,11 +157,10 @@ class ContactFormHandler {
 
   getFormData() {
     const formData = {
-      name: contactForm.querySelector('input[name="name"]')?.value || "",
-      email: contactForm.querySelector('input[name="email"]')?.value || "",
-      phone: contactForm.querySelector('input[name="phone"]')?.value || "",
-      message:
-        contactForm.querySelector('textarea[name="message"]')?.value || "",
+      full_name: contactForm.querySelector('input[name="full_name"]')?.value || "",
+      mobile: contactForm.querySelector('input[name="mobile"]')?.value || "",
+      description:
+        contactForm.querySelector('textarea[name="description"]')?.value || "",
     };
     return formData;
   }
@@ -170,11 +169,6 @@ class ContactFormHandler {
     // Basic validation
     if (!formData.name.trim()) {
       this.showError("Please enter your name");
-      return false;
-    }
-
-    if (!formData.email.trim()) {
-      this.showError("Please enter your email");
       return false;
     }
 
