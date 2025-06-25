@@ -118,6 +118,12 @@ class ContactFormHandler {
 
   async handleSubmit() {
     try {
+      // Check reCAPTCHA first
+      // if (!this.validateRecaptcha()) {
+      //   this.showError("Please complete the reCAPTCHA verification.");
+      //   return;
+      // }
+
       // Get form data
       const formData = this.getFormData();
 
@@ -143,6 +149,14 @@ class ContactFormHandler {
       this.hideLoading();
     }
   }
+
+  // validateRecaptcha() {
+  //   const recaptchaResponse = grecaptcha.getResponse();
+  //   if (!recaptchaResponse) {
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   validateAllFields() {
     const inputs = contactForm.querySelectorAll("input, textarea");
@@ -297,6 +311,11 @@ class ContactFormHandler {
 
   resetForm() {
     contactForm.reset();
+
+    // Reset reCAPTCHA
+    // if (typeof grecaptcha !== "undefined") {
+    //   grecaptcha.reset();
+    // }
 
     // Clear all validation states
     const inputs = contactForm.querySelectorAll("input, textarea");
