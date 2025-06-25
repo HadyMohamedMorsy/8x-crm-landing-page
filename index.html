@@ -151,33 +151,41 @@
             <div class="right">
               <div class="contact-form">
                 <h2>Get In Touch</h2>
-                <form action="">
+                <form class="contact-form-data">
                   <div class="form-group">
                     <input
                       type="text"
+                      name="name"
                       class="form-control"
                       placeholder="Name"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <input
-                      type="text"
+                      type="email"
+                      name="email"
                       class="form-control"
                       placeholder="Email"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <input
-                      type="text"
+                      type="tel"
+                      name="phone"
                       class="form-control"
                       placeholder="Phone Number"
+                      required
                     />
                   </div>
                   <div class="form-group">
                     <textarea
+                      name="message"
                       rows="4"
                       class="form-control"
                       placeholder="Message"
+                      required
                     ></textarea>
                   </div>
                   <div class="form-group">
@@ -197,14 +205,14 @@
 
     <main class="main-content">
       <!-- START ABOUT -->
-      <section class="about">
+      <!-- <section class="about">
         <div class="about-bg">
           <img src="img/about-bg.jpg" alt="" />
         </div>
         <div class="container">
           <h2 class="main-title">why choose us?</h2>
         </div>
-      </section>
+      </section> -->
       <!-- END ABOUT -->
 
       <!-- START UNIT DETAILS -->
@@ -622,5 +630,6 @@
     <script type="module" src="js/skeltones.js"></script>
     <script type="module" src="js/selectors.js"></script>
     <script type="module" src="js/fetch-request-data.js"></script>
+    <script type="module" src="js/contact-form.js"></script>
   </body>
 </html>

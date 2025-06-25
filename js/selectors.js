@@ -54,3 +54,4 @@ export const phoneNumber = document.querySelectorAll(".phone-number");
 export const email = document.querySelectorAll(".email");
 export const copyrightYear = document.querySelector(".copyright-year");
 export const projectCarousel = document.querySelector(".project-carousel");
+export const contactForm = document.querySelector(".contact-form-data");

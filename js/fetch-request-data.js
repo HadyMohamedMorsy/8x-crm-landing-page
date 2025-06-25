@@ -1,4 +1,4 @@
-const BASE_API =
+export const BASE_API =
   "https://testing.8xcrm.com/api/v2/real-estate-inventory/landing-page";
 
 import { buildListItemsHtml, initMap, updateContent } from "./helpers.js";
@@ -71,10 +71,9 @@ async function fetchData() {
     if (!publishUuid) return;
     const fullUrl = `${BASE_API}/${publishUuid}`;
     const response = await fetch(fullUrl, {
-      method: "POST",
       headers: {
         Accept: "application/json",
-        // "X-localization": "ar",
+        "X-localization": "en",
       },
     });
     const data = await response.json();
@@ -506,7 +505,7 @@ function setContentProject(project) {
     null,
     "block"
   );
-  updateContent(buildProjectTagsHtml(project), tags, tags, "block");
+  updateContent(buildProjectTagsHtml(project), tags, tags, "flex");
   faciltiesAndAmenities(project, 1);
   projectLogo(project);
   updateContent(
